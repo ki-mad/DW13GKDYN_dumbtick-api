@@ -39,3 +39,12 @@ exports.CategoryById = (req, res) => {
 //     .then(articles => res.send(articles))
 //     .catch(err => res.send(err));
 // }
+
+exports.addCategory = (req, res) => {
+    Category.create(req.body).then(data => {
+        res.send({
+            message: "Berhasil Daftar",
+            data,
+        })
+    }) 
+}

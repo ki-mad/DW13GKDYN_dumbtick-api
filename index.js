@@ -50,6 +50,7 @@ app.group("/api/v2", router => {
   //category
   router.get("/categories", categoryControllers.listCategory);
   router.get("/category/:id", categoryControllers.CategoryById);
+  router.post("/category", categoryControllers.addCategory);
 
   //event
   router.get("/event?title/:title", eventControllers.EventByTitle);
