@@ -39,7 +39,7 @@ const categoryControllers = require("./controllers/category");
 const eventControllers = require("./controllers/event");
 const paymentControllers = require("./controllers/payment");
 
-app.group("/api/v2/", router => {
+app.group("/api/v2", router => {
   router.post("/login", authControllers.login);
   router.post("/register", authControllers.register);
 
