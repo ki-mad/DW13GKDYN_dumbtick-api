@@ -68,3 +68,13 @@ exports.addEvent = (req, res) => {
         })
     }) 
 }
+
+exports.deleteEvent = (req, res) => {
+    Event.destroy({where: {id: req.params.id}})
+    .then(data => {
+        res.send({
+            message: "Event Deleted",
+            data
+        })
+    })
+}

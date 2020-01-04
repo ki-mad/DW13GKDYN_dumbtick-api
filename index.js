@@ -56,6 +56,7 @@ app.group("/api/v2", router => {
   router.get("/event?title/:title", eventControllers.EventByTitle);
   router.get("/category/:id/event", eventControllers.EventByCategory);
   router.get("/event/:id", eventControllers.EventById);
+  router.delete("/event/:id", eventControllers.deleteEvent);
   router.get("/events", eventControllers.listevent);
   router.post("/event", eventControllers.addEvent);
 
