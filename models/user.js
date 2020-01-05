@@ -20,7 +20,10 @@ module.exports = (sequelize, DataTypes) => {
       foreignKey: 'user_id'
     })
 
-    user.hasMany(models.favorite, { foreignKey: "user_id" })
+    user.hasMany(models.favorite, { 
+      foreignKey: "user_id",
+      as: "Favorites"
+     })
   };
   return user;
 };

@@ -26,7 +26,7 @@ const { authenticated } = require("./middleware");
 //membuat route home
 app.get("/", (req, res) => {
   // res berarti response dan berfungsi mengirimkan "Hello Express" kepada API
-  res.send("Hello Express");
+  res.send("Welcome, DumbTick API Kimad");
 });
 
 // when this nodejs app executed, it will listen to defined port
@@ -38,6 +38,7 @@ const userControllers = require("./controllers/user");
 const categoryControllers = require("./controllers/category");
 const eventControllers = require("./controllers/event");
 const paymentControllers = require("./controllers/payment");
+const favoriteControllers = require("./controllers/favorite");
 
 app.group("/api/v2", router => {
   router.post("/login", authControllers.login);
@@ -66,4 +67,10 @@ app.group("/api/v2", router => {
   router.put("/payment/:id", paymentControllers.updateStatusConfirm);
   router.put("/payment/eo/:id", paymentControllers.updateStatusApproved);
   router.get("/payment/ticket/:id", paymentControllers.getPaymentApproved);
+
+  //favorite
+    router.post('/favorites', favoriteControllers.favorite) 
+    router.post('/favorite', favoriteControllers.create) 
+    router.delete('/favorite/:id', favoriteControllers.destroy) 
+    router.get('/users/:id/favorite', favoriteControllers.show) 
 });

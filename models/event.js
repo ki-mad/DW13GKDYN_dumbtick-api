@@ -25,6 +25,10 @@ module.exports = (sequelize, DataTypes) => {
     event.hasMany(models.payment, {
       foreignKey: "event_id",
       as: "Payments"
+    }),
+    event.hasMany(models.favorite, {
+      foreignKey: "event_id",
+      as: "Events"
     })
   };
   return event;
