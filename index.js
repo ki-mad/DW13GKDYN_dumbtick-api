@@ -47,6 +47,7 @@ app.group("/api/v2", router => {
   //user
   router.get("/users", userControllers.listUser);
   router.get("/user/:id", userControllers.UserById);
+  router.put("/user/:id", userControllers.update);
 
   //category
   router.get("/categories", categoryControllers.listCategory);
@@ -60,7 +61,7 @@ app.group("/api/v2", router => {
   router.delete("/events/:id", eventControllers.deleteEvent);
   router.get("/events", eventControllers.listevent);
   router.post("/event", eventControllers.addEvent);
-  router.get('/events/:title/search', eventControllers.searchEvent)
+  router.get("/events/:title/search", eventControllers.searchEvent);
 
   //payment
   router.post("/payment", paymentControllers.payment);
@@ -70,8 +71,8 @@ app.group("/api/v2", router => {
   router.get("/payment/ticket/:id", paymentControllers.getPaymentApproved);
 
   //favorite
-    router.post('/favorites', favoriteControllers.favorite) 
-    router.post('/favorite', favoriteControllers.create) 
-    router.delete('/favorite/:id', favoriteControllers.destroy) 
-    router.get('/users/:id/favorite', favoriteControllers.show) 
+  router.post("/favorites", favoriteControllers.favorite);
+  router.post("/favorite", favoriteControllers.create);
+  router.delete("/favorite/:id", favoriteControllers.destroy);
+  router.get("/users/:id/favorite", favoriteControllers.show);
 });
