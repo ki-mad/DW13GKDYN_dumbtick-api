@@ -60,6 +60,7 @@ app.group("/api/v2", router => {
   router.delete("/events/:id", eventControllers.deleteEvent);
   router.get("/events", eventControllers.listevent);
   router.post("/event", eventControllers.addEvent);
+  router.get('/events/:title/search', eventControllers.searchEvent)
 
   //payment
   router.post("/payment", paymentControllers.payment);
