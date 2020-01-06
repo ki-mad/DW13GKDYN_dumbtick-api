@@ -37,12 +37,10 @@ exports.destroy = (req, res) => {
             }
     })
     .then(favorites => {
-        if(favorites) {
-            res.send({favorites, isFav: false, isDestroyed: true})
-        } else {
-            res.send({isDestroyed: false, isFav:true})
-        }
-        }).catch(err => res.send(err))
+        res.send({
+         isFav: false
+        })
+    })
 }
 
 exports.show = (req, res) => {
