@@ -8,15 +8,15 @@ exports.favorite = (req, res) => {
         {
             where:
             {
-                user_id: req.params.user_id,
-                event_id: req.params.event_id
+                user_id: req.body.user_id,
+                event_id: req.body.event_id
             }
         }
     ).then(data => {
-        if(data) {
-            res.send({status: true, data})
+        if(data === null) {
+            res.send({status: false, data})
         } else {
-            res.send({ status: false, data})
+            res.send({ status: true, data})
         }
     }).catch(err => res.send(err))
 }
@@ -30,7 +30,8 @@ exports.create = (req, res) => {
 
 exports.destroy = (req, res) => {
     Favorite.destroy({
-        where: { id: req.params.id }
+        where: { user_id: req.body.user_id },
+        where: { event_id: req.body.event_id}
     })
         .then(data => {
             res.send({message: "success delete data"})
