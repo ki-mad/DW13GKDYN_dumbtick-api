@@ -12,11 +12,11 @@ exports.favorite = (req, res) => {
                 event_id: req.body.event_id
             }
         }
-    ).then(data => {
-        if(data === null) {
-            res.send({status: false, data})
+    ).then(favorites => {
+        if(favorites === null) {
+            res.send({isFav: false})
         } else {
-            res.send({ status: true, data})
+            res.send({favorites, isFav: true})
         }
     }).catch(err => res.send(err))
 }
@@ -30,11 +30,18 @@ exports.create = (req, res) => {
 
 exports.destroy = (req, res) => {
     Favorite.destroy({
-        where: { user_id: req.body.user_id },
-        where: { event_id: req.body.event_id}
+        where:
+            {
+                user_id: req.body.user_id,
+                event_id: req.body.event_id
+            }
     })
-        .then(data => {
-            res.send({message: "success delete data"})
+    .then(favorites => {
+        if(favorites == 1) {
+            res.send({favorites, isFav: false, isDestroyed: true})
+        } else {
+            res.send({isDestroyed: false})
+        }
         }).catch(err => res.send(err))
 }
 
