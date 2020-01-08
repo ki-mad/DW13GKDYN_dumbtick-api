@@ -16,12 +16,14 @@ exports.UserById = (req, res) => {
     where: { id: req.params.id },
     include: [
       {
-        model: Event,
-        as: "Events",
-      },
-      {
         model: Favorite,
         as: "Favorites",
+        include: [
+          {
+            model: Event,
+            as: "EventId",
+          }
+        ]
       }
     ]
   })
