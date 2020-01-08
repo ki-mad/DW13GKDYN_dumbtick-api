@@ -44,17 +44,14 @@ exports.destroy = (req, res) => {
 exports.show = (req, res) => {
   Favorite.findAll({
     where: { user_id: req.params.id },
-    attributes: ["user_id", "event_id"],
     include: [
       {
         model: User,
-        as: "Favorites",
-        attributes: { exclude: ["password", "createdAt", "updaatedAt"] }
+        as: "favoritedBy",
       },
       {
         model: Event,
-        as: "Events",
-        attributes: { exclude: ["createdAt", "updatedAt"] }
+        as: "EventId",
       }
     ]
   })

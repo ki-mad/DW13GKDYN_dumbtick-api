@@ -74,5 +74,5 @@ app.group("/api/v2", router => {
   router.post("/favorites", favoriteControllers.favorite);
   router.post("/favorite", favoriteControllers.create);
   router.delete("/favorite/:id", favoriteControllers.destroy);
-  router.get("/users/:id/favorite", favoriteControllers.show);
+  router.get("/favorites/:id", favoriteControllers.show);
 });
