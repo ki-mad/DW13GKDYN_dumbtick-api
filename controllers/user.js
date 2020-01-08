@@ -1,6 +1,8 @@
 // const jwt = require('jsonwebtoken')
 const models = require("../models");
 const User = models.user;
+const Event = models.event;
+const Favorite = models.favorite;
 
 //get all data
 exports.listUser = (req, res) => {
@@ -11,7 +13,17 @@ exports.listUser = (req, res) => {
 
 exports.UserById = (req, res) => {
   User.findOne({
-    where: { id: req.params.id }
+    where: { id: req.params.id },
+    include: [
+      {
+        model: Event,
+        as: "Events",
+      },
+      {
+        model: Favorite,
+        as: "Favorites",
+      }
+    ]
   })
     .then(data => res.send(data))
     .catch(err => res.send(err));
